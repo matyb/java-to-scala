@@ -5,7 +5,7 @@ import static java.util.Arrays.asList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MappingCollectionsInJava {
+public class MappingCollectionsJava {
 
 	public static void main(String[] args) {
 		List<Integer> numbers = asList(0,1,2,3,4,5,6,7,8,9);
