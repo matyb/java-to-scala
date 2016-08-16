@@ -17,4 +17,8 @@ project/plugins/project/
 .worksheet
 
 # Eclipse specific
-.metadata
+**/.metadata
+*/.cache*
+*/.classpath
+*/.project
+*/.settings
