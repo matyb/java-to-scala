@@ -1,10 +1,14 @@
 package com.javatoscala;
 
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Arrays.*;
+import org.junit.Test;
 
-public class IfHeavyLogicJava {
+public class IfHeavyLogicTest {
 
 	static class Food {
 		private String type, size;
@@ -28,16 +32,26 @@ public class IfHeavyLogicJava {
 	    }else if(food.type.equals("rice")) {
 	    	return "Carbs were good for you in the 90's";
 	    }
-	    return "Sorry. Don't know anything about that.";
+	    return "Could be poisenous";
 	}
 	
-	public static void main(String[] args) {
-		List<Food> foods = asList(new Food("tacos", "huge"), new Food("pizza", "huge"), new Food("rice", "small"), 
-		        new Food("brussel sprouts", "teeny tiny"), new Food("fingernails", "huge"));
-		
+	@Test
+	public void testABunchOfIfStatements() {
+		List<Food> foods = asList(
+				new Food("tacos", "huge"), 
+				new Food("pizza", "huge"), 
+				new Food("rice", "small"), 
+		        new Food("brussel sprouts", "teeny tiny"), 
+		        new Food("fingernails", "huge"));
+		List<String> responses = new ArrayList<String>();
 		for(Food food : foods){
-			System.out.println(shouldIEatIt(food));
+			responses.add(shouldIEatIt(food));
 		}
+		assertEquals(asList("Ah dios mio!",
+							"Cowabunga dude",
+							"Carbs were good for you in the 90's",
+							"Be careful",
+							"Could be poisenous"), responses);
 	}
 	
 }

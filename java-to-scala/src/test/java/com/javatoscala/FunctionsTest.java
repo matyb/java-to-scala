@@ -1,14 +1,18 @@
 package com.javatoscala;
 
 import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class FunctionsJava {
+import org.junit.Test;
 
-	public static void main(String[] args) {
+public class FunctionsTest {
+
+	@Test
+	public void testThatOrderingIsKindOfReasonable() {
 		List<String> strings = asList("1", "2", "3", "42", "43", "45", "44", "46", "100", "99", "33");
 		Collections.sort(strings, new Comparator<String>(){
 			@Override
@@ -24,7 +28,7 @@ public class FunctionsJava {
 				return result;
 			}
 		});
-		System.out.println(strings);
+		assertEquals(asList("3", "1", "2", "42", "45", "99", "33", "43", "46", "44", "100"), strings);
 	}
 	
 }

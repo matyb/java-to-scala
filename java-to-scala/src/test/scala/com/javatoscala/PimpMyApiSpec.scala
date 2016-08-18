@@ -1,13 +1,15 @@
 package com.javatoscala
 
 import java.io.File
+import org.scalatest.Matchers
+import org.scalatest.FunSpec
 
-object PimpMyApiScala {
+class PimpMyApiSpec extends FunSpec with Matchers {
   
-  def main(args: Array[String]): Unit = {
+  it("finds stuff that's in my home dir") {
     new File("/Users/maty/devl")
       .findRecursively{ file => file.getAbsolutePath.endsWith(".txt") }
-      .foreach { x => println(x.getAbsolutePath)}
+      .map { file => file.getAbsolutePath} should contain("/Users/maty/devl/build/apache-maven-3.3.9/lib/ext/README.txt")
   }
   
   implicit def fileWithRecursiveFilter(file: File): FileRecursive = new FileRecursive(file)
